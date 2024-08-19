@@ -32,7 +32,7 @@ async def _chat_completions_async_generator(text_resp: str, model: str):
     yield "data: [DONE]\n\n"
 
 
-@app.post("/chat/completions")
+@app.post("/v1/chat/completions")
 async def chat_completions(request: ChatCompletionRequest):
     if request.messages:
         resp_content = f"As a mock AI Assitant, I can only echo your last message: {request.messages[-1].content}"
@@ -81,7 +81,7 @@ async def _completions_async_generator(text_resp: str, model: str):
     yield "data: [DONE]\n\n"
 
 
-@app.post("/completions")
+@app.post("/v1/completions")
 async def completions(request: CompletionRequest):
     if request.prompt:
         resp_content = (
